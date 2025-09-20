@@ -1,9 +1,5 @@
 # 🔲 QR Code Generator & Scanner PWA
 
-[![PWA](https://img.shields.io/badge/PWA-Progressive%20Web%20App-blue)](https://web.dev/progressive-web-apps/)
-[![React](https://img.shields.io/badge/React-18.2.0-blue?logo=react)](https://reactjs.org/)
-[![Offline](https://img.shields.io/badge/Offline-Supported-green)](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook)
-
 Progressive Web App (PWA) hiện đại để tạo và quét QR code với khả năng hoạt động offline, có thể cài đặt như native app.
 
 ## ✨ Tính năng chính
@@ -80,27 +76,6 @@ yarn build
 
 Deploy folder `build/` lên HTTPS server (GitHub Pages, Netlify, Vercel, etc.)
 
-## 📁 Cấu trúc dự án
-
-```
-qr-pwa/
-├── public/
-│   ├── manifest.json          # PWA manifest
-│   ├── sw.js                  # Service Worker
-│   ├── index.html             # HTML template
-│   └── icons/                 # App icons
-├── src/
-│   ├── components/
-│   │   ├── QRGenerator.jsx    # QR Generator component
-│   │   ├── QRScanner.jsx      # QR Scanner component
-│   │   └── CameraScanner.jsx  # Camera Scanner component
-│   ├── App.js                 # Main App component
-│   ├── App.css                # Main styling
-│   ├── index.js               # Entry point
-│   └── serviceWorkerRegistration.js  # SW registration
-├── package.json
-└── README.md
-```
 
 ## 🛠️ Technologies Used
 
