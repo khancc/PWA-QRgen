@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Html5Qrcode } from 'html5-qrcode';
+import React, { useState, useRef, useEffect } from "react";
+import { Html5Qrcode } from "html5-qrcode";
 
 const CameraScanner = () => {
   const [cameras, setCameras] = useState([]);
-  const [selectedCamera, setSelectedCamera] = useState('');
-  const [scanResult, setScanResult] = useState('');
+  const [selectedCamera, setSelectedCamera] = useState("");
+  const [scanResult, setScanResult] = useState("");
   const [isScanning, setIsScanning] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const html5QrCodeRef = useRef(null);
 
   useEffect(() => {
@@ -22,26 +22,28 @@ const CameraScanner = () => {
       setCameras(devices);
       if (devices.length > 0) {
         // Ưu tiên camera sau (rear camera)
-        const backCamera = devices.find(device => 
-          device.label.toLowerCase().includes('back') ||
-          device.label.toLowerCase().includes('rear') ||
-          device.label.toLowerCase().includes('environment')
-        ) || devices[devices.length - 1]; // Nếu không tìm thấy, chọn camera cuối
+        const backCamera =
+          devices.find(
+            (device) =>
+              device.label.toLowerCase().includes("back") ||
+              device.label.toLowerCase().includes("rear") ||
+              device.label.toLowerCase().includes("environment")
+          ) || devices[devices.length - 1]; // Nếu không tìm thấy, chọn camera cuối
         setSelectedCamera(backCamera.id);
       }
     } catch (error) {
       console.error("Error getting cameras:", error);
-      setError('Không thể truy cập camera. Vui lòng kiểm tra quyền truy cập.');
+      setError("Không thể truy cập camera. Vui lòng kiểm tra quyền truy cập.");
     }
   };
 
   const startScanning = async () => {
     if (!selectedCamera) {
-      setError('Vui lòng chọn camera');
+      setError("Vui lòng chọn camera");
       return;
     }
 
-    setError('');
+    setError("");
     try {
       const html5QrCode = new Html5Qrcode("qr-reader-camera");
       html5QrCodeRef.current = html5QrCode;
@@ -51,7 +53,7 @@ const CameraScanner = () => {
         {
           fps: 10,
           qrbox: { width: 250, height: 250 },
-          aspectRatio: 1.0
+          aspectRatio: 1.0,
         },
         (decodedText, decodedResult) => {
           setScanResult(decodedText);
@@ -62,11 +64,13 @@ const CameraScanner = () => {
           // Ignore scan errors - they're normal when no QR code is detected
         }
       );
-      
+
       setIsScanning(true);
     } catch (error) {
       console.error("Unable to start scanning:", error);
-      setError('Không thể khởi động camera. Vui lòng kiểm tra quyền truy cập camera.');
+      setError(
+        "Không thể khởi động camera. Vui lòng kiểm tra quyền truy cập camera."
+      );
     }
   };
 
@@ -83,23 +87,23 @@ const CameraScanner = () => {
   };
 
   const resetScanner = () => {
-    setScanResult('');
-    setError('');
+    setScanResult("");
+    setError("");
   };
 
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(scanResult);
-      alert('Đã sao chép vào clipboard!');
+      alert("Đã sao chép vào clipboard!");
     } catch (err) {
-      console.error('Failed to copy: ', err);
+      console.error("Failed to copy: ", err);
     }
   };
 
   return (
     <div className="camera-scanner">
       <h2>📱 Camera Scanner</h2>
-      
+
       {error && (
         <div className="error-message">
           <p>⚠️ {error}</p>
@@ -108,14 +112,14 @@ const CameraScanner = () => {
 
       <div className="camera-selection">
         <label htmlFor="camera-select">Chọn camera:</label>
-        <select 
+        <select
           id="camera-select"
-          value={selectedCamera} 
+          value={selectedCamera}
           onChange={(e) => setSelectedCamera(e.target.value)}
           disabled={isScanning}
         >
           <option value="">-- Chọn camera --</option>
-          {cameras.map(camera => (
+          {cameras.map((camera) => (
             <option key={camera.id} value={camera.id}>
               {camera.label || `Camera ${camera.id}`}
             </option>
@@ -125,8 +129,8 @@ const CameraScanner = () => {
 
       <div className="scanner-controls">
         {!isScanning ? (
-          <button 
-            onClick={startScanning} 
+          <button
+            onClick={startScanning}
             disabled={!selectedCamera}
             className="start-btn"
           >
@@ -137,7 +141,7 @@ const CameraScanner = () => {
             ⏹️ Dừng quét
           </button>
         )}
-        
+
         {scanResult && (
           <button onClick={resetScanner} className="reset-btn">
             🔄 Quét lại
@@ -161,10 +165,10 @@ const CameraScanner = () => {
               <button onClick={copyToClipboard} className="copy-btn">
                 📋 Sao chép
               </button>
-              {scanResult.startsWith('http') && (
-                <a 
-                  href={scanResult} 
-                  target="_blank" 
+              {scanResult.startsWith("http") && (
+                <a
+                  href={scanResult}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="open-link-btn"
                 >

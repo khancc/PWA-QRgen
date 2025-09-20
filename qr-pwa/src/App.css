@@ -6,8 +6,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -42,7 +42,7 @@ body {
 }
 
 .App-header h1 {
-  color: #2196F3;
+  color: #2196f3;
   font-size: 1.8rem;
   font-weight: 700;
   display: flex;
@@ -73,12 +73,12 @@ body {
 
 .status-indicator.online {
   background: rgba(76, 175, 80, 0.1);
-  color: #4CAF50;
+  color: #4caf50;
 }
 
 .status-indicator.offline {
   background: rgba(255, 152, 0, 0.1);
-  color: #FF9800;
+  color: #ff9800;
 }
 
 .status-dot {
@@ -89,22 +89,28 @@ body {
 }
 
 .status-indicator.online .status-dot {
-  background: #4CAF50;
+  background: #4caf50;
 }
 
 .status-indicator.offline .status-dot {
-  background: #FF9800;
+  background: #ff9800;
 }
 
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Install Button */
 .install-btn {
-  background: #2196F3;
+  background: #2196f3;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -116,7 +122,7 @@ body {
 }
 
 .install-btn:hover {
-  background: #1976D2;
+  background: #1976d2;
   transform: translateY(-1px);
 }
 
@@ -149,7 +155,7 @@ body {
 }
 
 .tab-btn.active {
-  background: #2196F3;
+  background: #2196f3;
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
@@ -182,13 +188,17 @@ body {
 }
 
 /* Component Styles */
-.qr-generator, .qr-scanner, .camera-scanner {
+.qr-generator,
+.qr-scanner,
+.camera-scanner {
   padding: 2rem;
   text-align: center;
 }
 
-.qr-generator h2, .qr-scanner h2, .camera-scanner h2 {
-  color: #2196F3;
+.qr-generator h2,
+.qr-scanner h2,
+.camera-scanner h2 {
+  color: #2196f3;
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   font-weight: 600;
@@ -212,7 +222,7 @@ body {
 
 .qr-generator input:focus {
   outline: none;
-  border-color: #2196F3;
+  border-color: #2196f3;
   box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
 }
 
@@ -243,13 +253,17 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.start-btn, button:not(.clear-btn):not(.reset-btn):not(.copy-btn):not(.stop-btn) {
-  background: #2196F3;
+.start-btn,
+button:not(.clear-btn):not(.reset-btn):not(.copy-btn):not(.stop-btn) {
+  background: #2196f3;
   color: white;
 }
 
-.start-btn:hover, button:not(.clear-btn):not(.reset-btn):not(.copy-btn):not(.stop-btn):hover:not(:disabled) {
-  background: #1976D2;
+.start-btn:hover,
+button:not(.clear-btn):not(.reset-btn):not(.copy-btn):not(.stop-btn):hover:not(
+    :disabled
+  ) {
+  background: #1976d2;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
 }
@@ -263,31 +277,33 @@ button:disabled {
   background: #d32f2f;
 }
 
-.clear-btn, .reset-btn {
+.clear-btn,
+.reset-btn {
   background: #757575;
   color: white;
 }
 
-.clear-btn:hover, .reset-btn:hover {
+.clear-btn:hover,
+.reset-btn:hover {
   background: #616161;
 }
 
 .copy-btn {
-  background: #4CAF50;
+  background: #4caf50;
   color: white;
 }
 
 .copy-btn:hover {
-  background: #388E3C;
+  background: #388e3c;
 }
 
 .download-btn {
-  background: #FF9800;
+  background: #ff9800;
   color: white;
 }
 
 .download-btn:hover {
-  background: #F57C00;
+  background: #f57c00;
 }
 
 /* QR Result */
@@ -324,7 +340,8 @@ button:disabled {
   flex-wrap: wrap;
 }
 
-.scanner-container, .camera-container {
+.scanner-container,
+.camera-container {
   margin: 1.5rem 0;
   display: flex;
   flex-direction: column;
@@ -337,7 +354,8 @@ button:disabled {
   font-style: italic;
 }
 
-#qr-reader, #qr-reader-camera {
+#qr-reader,
+#qr-reader-camera {
   max-width: 600px;
   width: 100%;
   border-radius: 12px;
@@ -376,7 +394,7 @@ button:disabled {
 }
 
 .scan-result h3 {
-  color: #4CAF50;
+  color: #4caf50;
   margin-bottom: 1rem;
   font-size: 1.2rem;
 }
@@ -390,7 +408,7 @@ button:disabled {
   padding: 1rem;
   border-radius: 8px;
   word-break: break-all;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   margin-bottom: 1rem;
   border: 1px solid #e0e0e0;
 }
@@ -403,7 +421,7 @@ button:disabled {
 }
 
 .open-link-btn {
-  background: #9C27B0;
+  background: #9c27b0;
   color: white;
   text-decoration: none;
   padding: 0.8rem 1.5rem;
@@ -417,7 +435,7 @@ button:disabled {
 }
 
 .open-link-btn:hover {
-  background: #7B1FA2;
+  background: #7b1fa2;
   transform: translateY(-1px);
 }
 
@@ -477,21 +495,29 @@ button:disabled {
     padding: 1rem;
   }
 
-  .qr-generator, .qr-scanner, .camera-scanner {
+  .qr-generator,
+  .qr-scanner,
+  .camera-scanner {
     padding: 1.5rem;
   }
 
-  .button-group, .scanner-controls, .result-actions {
+  .button-group,
+  .scanner-controls,
+  .result-actions {
     flex-direction: column;
     align-items: center;
   }
 
-  .button-group button, .scanner-controls button, .result-actions button, .result-actions a {
+  .button-group button,
+  .scanner-controls button,
+  .result-actions button,
+  .result-actions a {
     width: 100%;
     max-width: 200px;
   }
 
-  #qr-reader, #qr-reader-camera {
+  #qr-reader,
+  #qr-reader-camera {
     width: 100%;
   }
 
@@ -513,7 +539,9 @@ button:disabled {
     padding: 0.5rem;
   }
 
-  .qr-generator, .qr-scanner, .camera-scanner {
+  .qr-generator,
+  .qr-scanner,
+  .camera-scanner {
     padding: 1rem;
   }
 
@@ -524,8 +552,12 @@ button:disabled {
 
 /* Loading Animation */
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading {
@@ -540,7 +572,9 @@ button:disabled {
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -549,10 +583,13 @@ button:disabled {
 
 /* Print Styles */
 @media print {
-  .App-header, .app-footer, .scanner-controls, .tab-nav {
+  .App-header,
+  .app-footer,
+  .scanner-controls,
+  .tab-nav {
     display: none;
   }
-  
+
   .qr-result {
     break-inside: avoid;
   }

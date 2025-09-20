@@ -9,6 +9,7 @@ Progressive Web App (PWA) hiện đại để tạo và quét QR code với kh�
 ## ✨ Tính năng chính
 
 ### 🎯 QR Code Generator
+
 - ✅ Tạo QR code từ text hoặc URL
 - ✅ Tùy chỉnh kích thước và màu sắc
 - ✅ Tải xuống QR code dưới dạng PNG
@@ -16,6 +17,7 @@ Progressive Web App (PWA) hiện đại để tạo và quét QR code với kh�
 - ✅ Copy nội dung đã tạo
 
 ### 📷 QR Code Scanner
+
 - ✅ Quét QR code từ camera
 - ✅ Hỗ trợ multiple camera (front/back)
 - ✅ Auto-detect và decode QR code
@@ -24,6 +26,7 @@ Progressive Web App (PWA) hiện đại để tạo và quét QR code với kh�
 - ✅ Lịch sử quét (planned)
 
 ### 📱 PWA Features
+
 - ✅ **Offline Support** - Hoạt động không cần internet
 - ✅ **Installable** - Cài đặt như native app
 - ✅ **Responsive** - Tương thích mọi thiết bị
@@ -34,18 +37,21 @@ Progressive Web App (PWA) hiện đại để tạo và quét QR code với kh�
 ## 🚀 Cài đặt và chạy
 
 ### Yêu cầu hệ thống
+
 - Node.js >= 14.x
 - npm >= 6.x hoặc yarn >= 1.x
 - Modern browser with camera support
 - **HTTPS** (bắt buộc cho camera access)
 
 ### 1. Clone repository
+
 ```bash
 git clone https://github.com/yourusername/qr-pwa.git
 cd qr-pwa
 ```
 
 ### 2. Cài đặt dependencies
+
 ```bash
 npm install
 # hoặc
@@ -53,6 +59,7 @@ yarn install
 ```
 
 ### 3. Chạy development server
+
 ```bash
 npm start
 # hoặc
@@ -62,6 +69,7 @@ yarn start
 App sẽ chạy tại `http://localhost:3000`
 
 ### 4. Build for production
+
 ```bash
 npm run build
 # hoặc
@@ -69,6 +77,7 @@ yarn build
 ```
 
 ### 5. Deploy
+
 Deploy folder `build/` lên HTTPS server (GitHub Pages, Netlify, Vercel, etc.)
 
 ## 📁 Cấu trúc dự án
@@ -96,21 +105,25 @@ qr-pwa/
 ## 🛠️ Technologies Used
 
 ### Core
+
 - **React 18.2** - UI framework
 - **JavaScript ES6+** - Programming language
 - **CSS3** - Styling với Flexbox & Grid
 
 ### QR Code Libraries
+
 - **qrcode** - QR code generation
 - **html5-qrcode** - QR code scanning
 - **react-webcam** - Camera access
 
 ### PWA Features
+
 - **Service Worker** - Offline caching
 - **Web App Manifest** - App installation
 - **Workbox** - PWA toolkit (planned)
 
 ### Build Tools
+
 - **Create React App** - Build toolchain
 - **Webpack** - Module bundler
 - **Babel** - JavaScript compiler
@@ -118,6 +131,7 @@ qr-pwa/
 ## 📱 PWA Configuration
 
 ### Web App Manifest
+
 ```json
 {
   "name": "QR Code Generator & Scanner PWA",
@@ -132,12 +146,14 @@ qr-pwa/
 ```
 
 ### Service Worker Features
+
 - **Cache First** strategy cho static assets
 - **Network First** strategy cho API calls
 - **Offline fallback** cho navigation
 - **Background sync** (planned)
 
 ### Caching Strategy
+
 ```javascript
 // Static assets: Cache First
 - HTML, CSS, JS files
@@ -156,6 +172,7 @@ qr-pwa/
 ## 🔧 Configuration
 
 ### Environment Variables
+
 Tạo file `.env` trong root directory:
 
 ```env
@@ -171,6 +188,7 @@ REACT_APP_GA_ID=your_google_analytics_id
 ```
 
 ### Camera Permissions
+
 App sẽ yêu cầu quyền truy cập camera khi lần đầu sử dụng scanner:
 
 - **Chrome/Edge**: Automatic permission prompt
@@ -180,16 +198,17 @@ App sẽ yêu cầu quyền truy cập camera khi lần đầu sử dụng scann
 
 ## 🌐 Browser Support
 
-| Browser | Desktop | Mobile | PWA Install |
-|---------|---------|--------|-------------|
-| Chrome  | ✅      | ✅     | ✅          |
-| Edge    | ✅      | ✅     | ✅          |
-| Firefox | ✅      | ✅     | ❌          |
+| Browser | Desktop | Mobile | PWA Install    |
+| ------- | ------- | ------ | -------------- |
+| Chrome  | ✅      | ✅     | ✅             |
+| Edge    | ✅      | ✅     | ✅             |
+| Firefox | ✅      | ✅     | ❌             |
 | Safari  | ✅      | ✅     | ✅ (iOS 11.3+) |
 
 ## 📊 Performance
 
 ### Lighthouse Scores
+
 - **Performance**: 95+
 - **Accessibility**: 100
 - **Best Practices**: 100
@@ -197,6 +216,7 @@ App sẽ yêu cầu quyền truy cập camera khi lần đầu sử dụng scann
 - **PWA**: 100
 
 ### Bundle Size
+
 - **Main bundle**: ~500KB (gzipped)
 - **Service Worker**: ~15KB
 - **Total**: ~515KB
@@ -204,13 +224,16 @@ App sẽ yêu cầu quyền truy cập camera khi lần đầu sử dụng scann
 ## 🔒 Security
 
 ### HTTPS Requirement
+
 PWA yêu cầu HTTPS để:
+
 - Truy cập camera/microphone
 - Service Worker hoạt động
 - App installation
 - Push notifications
 
 ### Camera Privacy
+
 - Không lưu trữ hình ảnh
 - Chỉ xử lý QR code trên device
 - Không gửi data lên server
@@ -219,6 +242,7 @@ PWA yêu cầu HTTPS để:
 ## 🧪 Testing
 
 ### Unit Tests
+
 ```bash
 npm test
 # hoặc
@@ -226,6 +250,7 @@ yarn test
 ```
 
 ### E2E Tests (planned)
+
 ```bash
 npm run test:e2e
 # hoặc
@@ -233,6 +258,7 @@ yarn test:e2e
 ```
 
 ### PWA Testing
+
 1. **Lighthouse audit**: `npm run lighthouse`
 2. **Offline testing**: Disconnect internet và test app
 3. **Installation**: Test "Add to Home Screen"
@@ -241,6 +267,7 @@ yarn test:e2e
 ## 🚀 Deployment
 
 ### GitHub Pages
+
 ```bash
 npm install --save-dev gh-pages
 
@@ -253,12 +280,14 @@ npm run deploy
 ```
 
 ### Netlify
+
 1. Connect GitHub repo
 2. Build command: `npm run build`
 3. Publish directory: `build`
 4. Deploy
 
 ### Vercel
+
 ```bash
 npm install -g vercel
 vercel --prod
@@ -267,12 +296,15 @@ vercel --prod
 ## 🔄 Updates & Versioning
 
 ### Service Worker Updates
+
 App tự động check updates mỗi 5 phút:
+
 - Hiển thị notification khi có update
 - User choice để reload app
 - Seamless update experience
 
 ### Version History
+
 - **v1.0.0**: Basic QR generation & scanning
 - **v1.1.0**: PWA features & offline support (planned)
 - **v1.2.0**: Advanced camera controls (planned)
@@ -281,6 +313,7 @@ App tự động check updates mỗi 5 phút:
 ## 🤝 Contributing
 
 ### Development Setup
+
 1. Fork repository
 2. Create feature branch: `git checkout -b feature/amazing-feature`
 3. Commit changes: `git commit -m 'Add amazing feature'`
@@ -288,6 +321,7 @@ App tự động check updates mỗi 5 phút:
 5. Open Pull Request
 
 ### Code Style
+
 - ESLint configuration
 - Prettier formatting
 - Conventional commits
@@ -315,4 +349,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Developed with ❤️ by [Your Name](https://github.com/yourusername)**
 
-*Progressive Web App - Works everywhere, installs everywhere, reliable everywhere* 🌐
+_Progressive Web App - Works everywhere, installs everywhere, reliable everywhere_ 🌐
