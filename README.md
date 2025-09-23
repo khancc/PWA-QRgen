@@ -19,247 +19,170 @@ Progressive Web App (PWA) hiện đại để tạo và quét QR code với kh�
 - ✅ Auto-detect và decode QR code
 - ✅ Copy kết quả vào clipboard
 - ✅ Mở link tự động (nếu là URL)
-- ✅ Lịch sử quét (planned)
 
 ### 📱 PWA Features
 
 - ✅ **Offline Support** - Hoạt động không cần internet
 - ✅ **Installable** - Cài đặt như native app
 - ✅ **Responsive** - Tương thích mọi thiết bị
-- ✅ **Cache Strategy** - Tải nhanh với caching thông minh
-- ✅ **Push Notifications** (planned)
-- ✅ **Background Sync** (planned)
+- ✅ **Cache Strategy** - Tải nhanh với service worker
 
-## 🚀 Cài đặt và chạy
+## 🚀 Hướng dẫn chạy ứng dụng
 
 ### Yêu cầu hệ thống
 
-- Node.js >= 14.x
-- npm >= 6.x hoặc yarn >= 1.x
-- Modern browser with camera support
-- **HTTPS** (bắt buộc cho camera access)
+- **Node.js** >= 14.x ([Tải tại đây](https://nodejs.org/))
+- **npm** >= 6.x (đi kèm với Node.js)
+- **Modern browser** hỗ trợ camera
+- **HTTPS** (bắt buộc cho camera trên production)
 
-### 1. Clone repository
+### 📋 Các bước thực hiện
+
+#### 1. Cài đặt Node.js
+
+**Windows:**
+
+- Truy cập https://nodejs.org/
+- Tải phiên bản LTS (Long Term Support)
+- Chạy file installer và làm theo hướng dẫn
+- Restart Command Prompt/PowerShell
+
+**Kiểm tra cài đặt:**
 
 ```bash
-git clone https://github.com/yourusername/qr-pwa.git
-cd qr-pwa
+node --version
+npm --version
 ```
 
-### 2. Cài đặt dependencies
+#### 2. Clone và setup project
 
 ```bash
+# Clone repository
+git clone https://github.com/khancc/PWA-QRgen.git
+cd PWA-QRgen
+
+# Cài đặt dependencies
 npm install
-# hoặc
-yarn install
 ```
 
-### 3. Chạy development server
+#### 3. Chạy development server
 
 ```bash
 npm start
-# hoặc
-yarn start
 ```
 
-App sẽ chạy tại `http://localhost:3000`
+🌐 App sẽ tự động mở tại: **http://localhost:3000**
 
-### 4. Build for production
+#### 4. Build for production
 
 ```bash
 npm run build
-# hoặc
-yarn build
 ```
 
-### 5. Deploy
+#### 5. Deploy
 
-Deploy folder `build/` lên HTTPS server (GitHub Pages, Netlify, Vercel, etc.)
+Deploy thư mục `build/` lên HTTPS server (Netlify, Vercel, GitHub Pages, etc.)
 
+### ⚠️ Lưu ý quan trọng
+
+#### Camera Permissions
+
+- **Chrome/Edge**: Tự động hỏi quyền khi truy cập camera
+- **Firefox**: Click vào icon camera ở address bar để cấp quyền
+- **Safari iOS**: Settings → Safari → Camera → Allow
+- **Development**: http://localhost hoạt động bình thường
+- **Production**: Bắt buộc phải có HTTPS để camera hoạt động
+
+#### PWA Installation
+
+- **Chrome**: Menu → Install app
+- **Edge**: Menu → Apps → Install this site as an app
+- **Safari iOS**: Share → Add to Home Screen
+
+#### Test trên Mobile
+
+```bash
+# Sử dụng local network
+npm start -- --host 0.0.0.0
+# Sau đó truy cập http://YOUR_IP:3000 từ mobile
+
+# Hoặc sử dụng ngrok cho HTTPS
+npx ngrok http 3000
+```
 
 ## 🛠️ Technologies Used
-
-### Core
 
 - **React 18.2** - UI framework
 - **JavaScript ES6+** - Programming language
 - **CSS3** - Styling với Flexbox & Grid
-
-### QR Code Libraries
-
-- **qrcode** - QR code generation
-- **html5-qrcode** - QR code scanning
-- **react-webcam** - Camera access
-
-### PWA Features
-
-- **Service Worker** - Offline caching
-- **Web App Manifest** - App installation
-- **Workbox** - PWA toolkit (planned)
-
-### Build Tools
-
+- **qrcode** - QR code generation library
+- **html5-qrcode** - QR code scanning library
+- **Service Worker** - Offline caching và PWA features
 - **Create React App** - Build toolchain
-- **Webpack** - Module bundler
-- **Babel** - JavaScript compiler
 
-## 📱 PWA Configuration
+## � Troubleshooting
 
-### Web App Manifest
+### Lỗi npm không tìm thấy
 
-```json
-{
-  "name": "QR Code Generator & Scanner PWA",
-  "short_name": "QR Scanner",
-  "display": "standalone",
-  "orientation": "portrait",
-  "theme_color": "#2196F3",
-  "background_color": "#ffffff",
-  "start_url": ".",
-  "scope": "/"
-}
+```bash
+# Kiểm tra PATH environment variable
+echo $PATH
+# Reinstall Node.js nếu cần thiết
 ```
 
-### Service Worker Features
+### Camera không hoạt động
 
-- **Cache First** strategy cho static assets
-- **Network First** strategy cho API calls
-- **Offline fallback** cho navigation
-- **Background sync** (planned)
+1. ✅ Kiểm tra HTTPS (required cho production)
+2. ✅ Kiểm tra browser permissions
+3. ✅ Thử browser khác (Chrome/Edge recommended)
+4. ✅ Restart browser
+5. ✅ Kiểm tra camera không bị app khác sử dụng
 
-### Caching Strategy
+### Clean install
 
-```javascript
-// Static assets: Cache First
-- HTML, CSS, JS files
-- Images, icons
-- Fonts
-
-// Dynamic content: Network First
-- API responses
-- User generated content
-
-// Offline fallback
-- Show cached version when offline
-- Queue actions for when online
+```bash
+rm -rf node_modules package-lock.json
+npm install
 ```
-
-## 🔧 Configuration
-
-### Environment Variables
-
-Tạo file `.env` trong root directory:
-
-```env
-# App Configuration
-REACT_APP_NAME="QR Code PWA"
-REACT_APP_VERSION="1.0.0"
-
-# PWA Configuration
-REACT_APP_SW_UPDATE_INTERVAL=300000
-
-# Optional: Analytics
-REACT_APP_GA_ID=your_google_analytics_id
-```
-
-### Camera Permissions
-
-App sẽ yêu cầu quyền truy cập camera khi lần đầu sử dụng scanner:
-
-- **Chrome/Edge**: Automatic permission prompt
-- **Firefox**: Manual permission in address bar
-- **Safari iOS**: Permission in Settings → Safari → Camera
-- **Android**: Automatic permission prompt
 
 ## 🌐 Browser Support
 
-| Browser | Desktop | Mobile | PWA Install    |
-| ------- | ------- | ------ | -------------- |
-| Chrome  | ✅      | ✅     | ✅             |
-| Edge    | ✅      | ✅     | ✅             |
-| Firefox | ✅      | ✅     | ❌             |
-| Safari  | ✅      | ✅     | ✅ (iOS 11.3+) |
+| Browser | Desktop | Mobile | Camera | PWA Install |
+| ------- | ------- | ------ | ------ | ----------- |
+| Chrome  | ✅      | ✅     | ✅     | ✅          |
+| Edge    | ✅      | ✅     | ✅     | ✅          |
+| Firefox | ✅      | ✅     | ✅     | ❌          |
+| Safari  | ✅      | ✅     | ✅     | ✅ (iOS)    |
 
-## 📊 Performance
+## 🔒 Privacy & Security
 
-### Lighthouse Scores
-
-- **Performance**: 95+
-- **Accessibility**: 100
-- **Best Practices**: 100
-- **SEO**: 100
-- **PWA**: 100
-
-### Bundle Size
-
-- **Main bundle**: ~500KB (gzipped)
-- **Service Worker**: ~15KB
-- **Total**: ~515KB
-
-## 🔒 Security
-
-### HTTPS Requirement
-
-PWA yêu cầu HTTPS để:
-
-- Truy cập camera/microphone
-- Service Worker hoạt động
-- App installation
-- Push notifications
-
-### Camera Privacy
-
-- Không lưu trữ hình ảnh
-- Chỉ xử lý QR code trên device
-- Không gửi data lên server
-- User control camera access
+- ✅ **Không lưu trữ hình ảnh** - Chỉ xử lý QR code trên device
+- ✅ **Không gửi data** - Hoạt động hoàn toàn offline
+- ✅ **HTTPS required** - Bảo mật cho camera access
+- ✅ **User control** - Người dùng kiểm soát quyền camera
 
 ## 🧪 Testing
 
-### Unit Tests
-
 ```bash
+# Chạy unit tests
 npm test
-# hoặc
-yarn test
+
+# Chạy Lighthouse audit
+npm run lighthouse
+
+# Test offline
+# 1. Mở app trong browser
+# 2. Disconnect internet
+# 3. Reload page - app vẫn hoạt động
 ```
-
-### E2E Tests (planned)
-
-```bash
-npm run test:e2e
-# hoặc
-yarn test:e2e
-```
-
-### PWA Testing
-
-1. **Lighthouse audit**: `npm run lighthouse`
-2. **Offline testing**: Disconnect internet và test app
-3. **Installation**: Test "Add to Home Screen"
-4. **Camera**: Test trên các device khác nhau
 
 ## 🚀 Deployment
 
-### GitHub Pages
+### Netlify (Recommended)
 
-```bash
-npm install --save-dev gh-pages
-
-# Add to package.json scripts
-"predeploy": "npm run build",
-"deploy": "gh-pages -d build"
-
-# Deploy
-npm run deploy
-```
-
-### Netlify
-
-1. Connect GitHub repo
-2. Build command: `npm run build`
-3. Publish directory: `build`
-4. Deploy
+1. Build project: `npm run build`
+2. Drag & drop thư mục `build/` vào [Netlify](https://netlify.com)
+3. Hoặc connect GitHub repo để auto-deploy
 
 ### Vercel
 
@@ -268,26 +191,14 @@ npm install -g vercel
 vercel --prod
 ```
 
-## 🔄 Updates & Versioning
+### GitHub Pages
 
-### Service Worker Updates
-
-App tự động check updates mỗi 5 phút:
-
-- Hiển thị notification khi có update
-- User choice để reload app
-- Seamless update experience
-
-### Version History
-
-- **v1.0.0**: Basic QR generation & scanning
-- **v1.1.0**: PWA features & offline support (planned)
-- **v1.2.0**: Advanced camera controls (planned)
-- **v1.3.0**: History & favorites (planned)
+```bash
+npm install --save-dev gh-pages
+npm run deploy
+```
 
 ## 🤝 Contributing
-
-### Development Setup
 
 1. Fork repository
 2. Create feature branch: `git checkout -b feature/amazing-feature`
@@ -295,33 +206,18 @@ App tự động check updates mỗi 5 phút:
 4. Push to branch: `git push origin feature/amazing-feature`
 5. Open Pull Request
 
-### Code Style
-
-- ESLint configuration
-- Prettier formatting
-- Conventional commits
-- Component naming conventions
-
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - see [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## 🙏 Credits
 
 - [html5-qrcode](https://github.com/mebjas/html5-qrcode) - QR scanning library
 - [qrcode](https://github.com/soldair/node-qrcode) - QR generation library
 - [Create React App](https://create-react-app.dev/) - React setup
-- [Web.dev PWA guides](https://web.dev/progressive-web-apps/) - PWA best practices
-
-## 📞 Support
-
-- 📧 Email: support@yourapp.com
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/qr-pwa/issues)
-- 📖 Documentation: [Wiki](https://github.com/yourusername/qr-pwa/wiki)
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/qr-pwa/discussions)
 
 ---
 
-**Developed with ❤️ by [Your Name](https://github.com/yourusername)**
+**Developed with ❤️**
 
-_Progressive Web App - Works everywhere, installs everywhere, reliable everywhere_ 🌐
+_Progressive Web App - Works everywhere, installs everywhere_ 🌐
